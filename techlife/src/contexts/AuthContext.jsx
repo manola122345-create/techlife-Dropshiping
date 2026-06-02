@@ -10,25 +10,26 @@ import { auth, db } from "../firebase";
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
+// 🔐 Emails admins — ajoute ton email ici
+const ADMIN_EMAILS = ["admin@techlife.store", "ton@email.com"];
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const isAdmin = user && ADMIN_EMAILS.includes(user.email);
+
   async function register(email, password, firstName, lastName) {
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(user, { displayName: `${firstName} ${lastName}` });
     await setDoc(doc(db, "customers", user.uid), {
-      firstName, lastName, email,
-      createdAt: serverTimestamp(),
-      orders: []
+      firstName, lastName, email, createdAt: serverTimestamp()
     });
     return user;
   }
 
-  async function login(email, password) {
-    return signInWithEmailAndPassword(auth, email, password);
-  }
+  async function login(email, password) { return signInWithEmailAndPassword(auth, email, password); }
 
   async function loginWithGoogle() {
     const provider = new GoogleAuthProvider();
@@ -37,10 +38,7 @@ export function AuthProvider({ children }) {
     const snap = await getDoc(ref);
     if (!snap.exists()) {
       const names = (result.user.displayName || "").split(" ");
-      await setDoc(ref, {
-        firstName: names[0] || "", lastName: names.slice(1).join(" ") || "",
-        email: result.user.email, createdAt: serverTimestamp(), orders: []
-      });
+      await setDoc(ref, { firstName: names[0] || "", lastName: names.slice(1).join(" ") || "", email: result.user.email, createdAt: serverTimestamp() });
     }
     return result;
   }
@@ -64,7 +62,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, profile, loading, register, login, loginWithGoogle, logout, resetPassword, loadProfile }}>
+    <AuthContext.Provider value={{ user, profile, loading, isAdmin, register, login, loginWithGoogle, logout, resetPassword, loadProfile }}>
       {!loading && children}
     </AuthContext.Provider>
   );

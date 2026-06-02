@@ -8,20 +8,17 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
+import Admin from "./pages/Admin";
 import { Checkout, OrderSuccess, Login, Register, Account, MyOrders } from "./pages/OtherPages";
 
-function Layout({ children }) {
+function StoreLayout({ children }) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       <main className="flex-1">{children}</main>
       <Footer />
     </div>
   );
-}
-
-function AuthLayout({ children }) {
-  return <>{children}</>;
 }
 
 export default function App() {
@@ -30,23 +27,34 @@ export default function App() {
       <AuthProvider>
         <CartProvider>
           <Routes>
-            <Route path="/" element={<Layout><Home /></Layout>} />
-            <Route path="/shop" element={<Layout><Shop /></Layout>} />
-            <Route path="/product/:id" element={<Layout><ProductDetail /></Layout>} />
-            <Route path="/cart" element={<Layout><Cart /></Layout>} />
-            <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
-            <Route path="/order-success" element={<Layout><OrderSuccess /></Layout>} />
-            <Route path="/account" element={<Layout><Account /></Layout>} />
-            <Route path="/account/orders" element={<Layout><MyOrders /></Layout>} />
-            <Route path="/login" element={<AuthLayout><Login /></AuthLayout>} />
-            <Route path="/register" element={<AuthLayout><Register /></AuthLayout>} />
+            {/* Store pages */}
+            <Route path="/" element={<StoreLayout><Home /></StoreLayout>} />
+            <Route path="/shop" element={<StoreLayout><Shop /></StoreLayout>} />
+            <Route path="/product/:id" element={<StoreLayout><ProductDetail /></StoreLayout>} />
+            <Route path="/cart" element={<StoreLayout><Cart /></StoreLayout>} />
+            <Route path="/checkout" element={<StoreLayout><Checkout /></StoreLayout>} />
+            <Route path="/order-success" element={<StoreLayout><OrderSuccess /></StoreLayout>} />
+            <Route path="/account" element={<StoreLayout><Account /></StoreLayout>} />
+            <Route path="/account/orders" element={<StoreLayout><MyOrders /></StoreLayout>} />
+            {/* Auth pages — no layout */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            {/* Admin — no store layout */}
+            <Route path="/admin" element={<Admin />} />
+            {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
           <Toaster
             position="top-right"
             toastOptions={{
               duration: 3000,
-              style: { borderRadius: "12px", fontFamily: "system-ui, sans-serif", fontSize: "14px", fontWeight: "600" },
+              style: {
+                borderRadius: "16px",
+                fontFamily: "Inter, system-ui, sans-serif",
+                fontSize: "13px",
+                fontWeight: "700",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+              },
               success: { style: { background: "#f0fdf4", border: "1px solid #bbf7d0", color: "#166534" } },
               error: { style: { background: "#fef2f2", border: "1px solid #fecaca", color: "#991b1b" } },
             }}
