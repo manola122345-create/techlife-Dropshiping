@@ -21,7 +21,7 @@ export function Checkout() {
     email: user?.email || "", phone: "", address: "", city: "", zip: "", country: "France",
     cardName: "", cardNumber: "", expiry: "", cvv: ""
   });
-  const shipping = subtotal >= 50 ? 0 : 5.99;
+  const shipping = 0; // Livraison selon fournisseur
   const total = subtotal + shipping;
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
@@ -131,7 +131,7 @@ export function Checkout() {
             </div>
             <div className="border-t-2 border-gray-200 pt-4 space-y-2">
               <div className="flex justify-between text-sm text-gray-500"><span>Sous-total</span><span>{subtotal.toFixed(2)}€</span></div>
-              <div className="flex justify-between text-sm text-gray-500"><span>Livraison</span><span className={shipping===0?"text-green-600 font-bold":""}>{shipping===0?"Gratuite":shipping.toFixed(2)+"€"}</span></div>
+              <div className="flex justify-between text-sm text-gray-500"><span>Livraison</span><span className="text-blue-500 font-bold">Selon fournisseur</span></div>
               <div className="flex justify-between font-black text-gray-900 text-lg pt-2 border-t-2 border-gray-200"><span>Total</span><span>{total.toFixed(2)}€</span></div>
             </div>
           </div>
