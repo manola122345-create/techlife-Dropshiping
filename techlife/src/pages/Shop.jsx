@@ -35,8 +35,17 @@ export default function Shop() {
     setCat(searchParams.get("cat") || "Tout");
   }, [searchParams]);
 
+  // Mapping pour accepter les 2 langues
+  const catMap = {
+    "Electronique": ["Electronique", "Electronics", "Electronic"],
+    "Sport": ["Sport", "Sports", "Fitness", "Sport & Fitness"],
+    "Lifestyle": ["Lifestyle", "Life Style", "Fashion", "Mode", "Maison", "Home"]
+  };
+
   let filtered = all.filter(p => {
-    const matchCat = cat === "Tout" || p.category === cat;
+    const matchCat = cat === "Tout" || 
+      p.category === cat || 
+      (catMap[cat] && catMap[cat].includes(p.category));
     const matchSearch = !search || p.title?.toLowerCase().includes(search.toLowerCase());
     const matchPrice = (p.price || 0) <= maxPrice;
     return matchCat && matchSearch && matchPrice;
