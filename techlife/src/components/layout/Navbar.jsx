@@ -44,7 +44,7 @@ export default function Navbar() {
     <>
       {/* Announcement bar */}
       <div className="bg-gray-900 text-white text-center py-2.5 text-xs font-medium tracking-wider">
-        ✈️ Livraison gratuite dès 50€ · Retours gratuits sous 30 jours
+        🌍 Livraison internationale · Délais selon fournisseur · Retours sous 30 jours
       </div>
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
