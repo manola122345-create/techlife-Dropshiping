@@ -101,7 +101,7 @@ export default function Cart() {
               <div className="space-y-3 mb-5">
                 <div className="flex justify-between text-sm"><span className="text-gray-500">Sous-total</span><span className="font-bold">{subtotal.toFixed(2)}€</span></div>
                 {discount > 0 && <div className="flex justify-between text-sm text-green-600"><span>Réduction (-{discount*100}%)</span><span className="font-bold">-{discountAmt.toFixed(2)}€</span></div>}
-                <div className="flex justify-between text-sm"><span className="text-gray-500">Livraison</span><span className="font-bold text-blue-500">Calculée selon fournisseur</span></div>
+                <div className="flex justify-between text-sm"><span className="text-gray-500">Livraison</span><span className="font-bold text-green-600">Offerte 🎉</span></div>
                 <div className="border-t-2 border-gray-100 pt-3 flex justify-between">
                   <span className="font-black text-gray-900">Total</span>
                   <span className="font-black text-2xl text-gray-900">{total.toFixed(2)}€</span>

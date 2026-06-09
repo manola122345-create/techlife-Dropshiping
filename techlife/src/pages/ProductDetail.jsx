@@ -140,7 +140,7 @@ export default function ProductDetail() {
 
             {/* Guarantees */}
             <div className="grid grid-cols-3 gap-3">
-              {[[Truck,"Livraison 2-7j"],[Shield,"Sécurisé SSL"],[RefreshCw,"Retours 30j"]].map(([Icon,l]) => (
+              {[[Truck,"Livraison offerte"],[Shield,"Sécurisé SSL"],[RefreshCw,"Retours 30j"]].map(([Icon,l]) => (
                 <div key={l} className="flex flex-col items-center gap-2 p-4 bg-gray-50 rounded-2xl text-center">
                   <Icon className="w-5 h-5 text-orange-500"/>
                   <p className="text-xs font-bold text-gray-600">{l}</p>

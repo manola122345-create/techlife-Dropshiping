@@ -131,7 +131,7 @@ export function Checkout() {
             </div>
             <div className="border-t-2 border-gray-200 pt-4 space-y-2">
               <div className="flex justify-between text-sm text-gray-500"><span>Sous-total</span><span>{subtotal.toFixed(2)}€</span></div>
-              <div className="flex justify-between text-sm text-gray-500"><span>Livraison</span><span className="text-blue-500 font-bold">Selon fournisseur</span></div>
+              <div className="flex justify-between text-sm text-gray-500"><span>Livraison</span><span className="text-green-600 font-bold">Offerte 🎉</span></div>
               <div className="flex justify-between font-black text-gray-900 text-lg pt-2 border-t-2 border-gray-200"><span>Total</span><span>{total.toFixed(2)}€</span></div>
             </div>
           </div>
@@ -150,7 +150,7 @@ export function OrderSuccess() {
       </div>
       <h1 className="text-4xl font-black text-gray-900 mb-3">Commande confirmée !</h1>
       <p className="text-gray-500 text-lg mb-2">Merci pour votre achat 🎉</p>
-      <p className="text-gray-400 text-sm mb-10">Vous recevrez un email de confirmation. Livraison estimée : 2-7 jours.</p>
+      <p className="text-gray-400 text-sm mb-10">Vous recevrez un email de confirmation. Livraison estimée : 10 à 30 jours ouvrés.</p>
       <div className="flex gap-4 flex-wrap justify-center">
         <Link to="/account/orders" className="px-8 py-4 bg-gray-900 text-white font-black rounded-2xl hover:bg-orange-500 transition-all">Suivre ma commande</Link>
         <Link to="/shop" className="px-8 py-4 border-2 border-gray-200 text-gray-700 font-bold rounded-2xl hover:bg-gray-50 transition-all">Continuer mes achats</Link>

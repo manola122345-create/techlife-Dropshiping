@@ -12,7 +12,7 @@ const CATS = [
 ];
 
 const TRUST = [
-  { icon: Truck, title:"Livraison internationale", desc:"Délais selon fournisseur" },
+  { icon: Truck, title:"Livraison en France", desc:"10 à 30 jours ouvrés" },
   { icon: Shield, title:"Paiement sécurisé", desc:"SSL & 3D Secure" },
   { icon: RefreshCw, title:"Retours 30 jours", desc:"Remboursement garanti" },
   { icon: Headphones, title:"Support 7j/7", desc:"Réponse sous 24h" },
@@ -60,6 +60,12 @@ export default function Home() {
               </Link>
               <Link to="/shop?cat=Electronique" className="inline-flex items-center gap-2 px-7 py-4 bg-white/10 border border-white/20 text-white font-bold rounded-2xl hover:bg-white/20 transition-all backdrop-blur-sm text-sm">
                 ⚡ Électronique
+              </Link>
+              <Link to="/shop?cat=Sport" className="inline-flex items-center gap-2 px-7 py-4 bg-white/10 border border-white/20 text-white font-bold rounded-2xl hover:bg-white/20 transition-all backdrop-blur-sm text-sm">
+                💪 Sport & Fitness
+              </Link>
+              <Link to="/shop?cat=Lifestyle" className="inline-flex items-center gap-2 px-7 py-4 bg-white/10 border border-white/20 text-white font-bold rounded-2xl hover:bg-white/20 transition-all backdrop-blur-sm text-sm">
+                ✨ Lifestyle
               </Link>
             </div>
           </div>
@@ -164,8 +170,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=50')] bg-cover bg-center opacity-10" />
           <div className="relative">
             <p className="text-xs font-bold text-orange-400 uppercase tracking-widest mb-3">Offre limitée</p>
-            <h2 className="text-4xl font-black text-white mb-3">Livraison internationale</h2>
-            <p className="text-gray-300 text-lg mb-8">Expédiés directement depuis nos fournisseurs <span className="font-black text-white">vers chez toi</span></p>
+            <h2 className="text-4xl font-black text-white mb-3">Livraison offerte</h2>
+            <p className="text-gray-300 text-lg mb-8">Sur tous vos articles — Livraison en France en <span className="font-black text-white">10 à 30 jours</span></p>
             <Link to="/shop" className="inline-flex items-center gap-2 px-8 py-4 bg-orange-500 text-white font-black rounded-2xl hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/30">
               Profiter de l'offre <ArrowRight className="w-4 h-4" />
             </Link>
